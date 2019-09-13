@@ -123,16 +123,3 @@ function Card(data) {
 
   return card;
 }
-
-// class Card {
-//   constructor(data) {
-//     this.name = data.name;
-//     this.userName = data.login;
-//     this.location = data.location;
-//     this.followersCount = data.followers;
-//     this.followingCount = data.following;
-//     this.bio = data.bio;
-//     this.profile = data.html_url;
-//     this.image = data.avatar_url;
-//   }
-// }
