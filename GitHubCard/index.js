@@ -2,11 +2,12 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+const cards = document.querySelector('.cards');
 axios
   .get('https://api.github.com/users/germainep')
   .then(result => {
     console.log(result);
+    cards.appendChild(Card(result.data));
   })
   .catch(error => {
     console.error(error);
@@ -89,7 +90,7 @@ function Card(data) {
   cardInfo.appendChild(location);
 
   const profile = document.createElement('p');
-  profile.textContent = 'Location:';
+  profile.textContent = 'Profile: ';
 
   const profileLink = document.createElement('a');
   profileLink.href = data.html_url;
@@ -99,15 +100,15 @@ function Card(data) {
   cardInfo.appendChild(profile);
 
   const followers = document.createElement('p');
-  followers.textContent = data.followers;
+  followers.textContent = `Followers: ${data.followers}`;
   cardInfo.appendChild(followers);
 
   const following = document.createElement('p');
-  following.textContent = data.following;
+  following.textContent = `Following: ${data.following}`;
   cardInfo.appendChild(following);
 
   const bio = document.createElement('p');
-  bio.textContent = data.bio;
+  bio.textContent = `Bio: ${data.bio}`;
   cardInfo.appendChild(bio);
 
   card.appendChild(cardInfo);
