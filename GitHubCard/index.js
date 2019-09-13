@@ -6,21 +6,17 @@ const cards = document.querySelector('.cards');
 axios
   .get('https://api.github.com/users/germainep')
   .then(result => {
-    console.log(result);
     cards.appendChild(Card(result.data));
     return result.data.followers_url;
   })
-  .then(data => fetch(data))
-  .then(response => response.json())
-  .then(data => data.map(el => `https://api.github.com/users/${el.login}`))
-  .then(response =>
-    response.map(el =>
-      axios.get(el).then(result => {
-        console.log(result);
-        cards.appendChild(Card(result.data));
+  .then(result => axios.get(result))
+  .then(result => {
+    result.data.forEach(el =>
+      axios.get(el.url).then(response => {
+        cards.appendChild(Card(response.data));
       })
-    )
-  )
+    );
+  })
   .catch(error => {
     console.error(error);
   });
