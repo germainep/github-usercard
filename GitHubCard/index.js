@@ -61,4 +61,69 @@ const followersArray = [];
   justsml
   luishrd
   bigknell
-*/
+  */
+
+function Card(data) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  const image = document.createElement('img');
+  image.src = data.avatar_url;
+  card.appendChild(image);
+
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+
+  const name = document.createElement('h3');
+  name.classList.add('name');
+  name.textContent = data.name;
+  cardInfo.appendChild(name);
+
+  const username = document.createElement('p');
+  username.classList.add('username');
+  username.textContent = data.login;
+  cardInfo.appendChild(username);
+
+  const location = document.createElement('p');
+  location.textContent = `Location: ${data.location}`;
+  cardInfo.appendChild(location);
+
+  const profile = document.createElement('p');
+  profile.textContent = 'Location:';
+
+  const profileLink = document.createElement('a');
+  profileLink.href = data.html_url;
+  profileLink.textContent = data.html_url;
+  profile.appendChild(profileLink);
+
+  cardInfo.appendChild(profile);
+
+  const followers = document.createElement('p');
+  followers.textContent = data.followers;
+  cardInfo.appendChild(followers);
+
+  const following = document.createElement('p');
+  following.textContent = data.following;
+  cardInfo.appendChild(following);
+
+  const bio = document.createElement('p');
+  bio.textContent = data.bio;
+  cardInfo.appendChild(bio);
+
+  card.appendChild(cardInfo);
+
+  return card;
+}
+
+// class Card {
+//   constructor(data) {
+//     this.name = data.name;
+//     this.userName = data.login;
+//     this.location = data.location;
+//     this.followersCount = data.followers;
+//     this.followingCount = data.following;
+//     this.bio = data.bio;
+//     this.profile = data.html_url;
+//     this.image = data.avatar_url;
+//   }
+// }
